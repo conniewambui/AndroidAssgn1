@@ -13,7 +13,10 @@ class registration : AppCompatActivity() {
         button.setOnClickListener {
             val intent = Intent(baseContext,MainActivity ::class.java)
             startActivity(intent)
+
+
         }
+        
     }
 
 }

@@ -1,8 +1,4 @@
-
-package ke.co.app
-
-import com.google.gson.annotations.SerializedName
-import ke.co.app.Student
+package com.example.myapplication
 
 
 data class RegistrationResponse(

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.row_course_item.view.*
 
-class coursesRecyclerViewAdapter(val coursesList: List<Courses>) :
+class coursesRecyclerViewAdapter(val coursesList: List<Coursess>) :
     RecyclerView.Adapter<coursesRecyclerViewAdapter.NamesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NamesViewHolder{
         var itemView = LayoutInflater.from(parent.context)

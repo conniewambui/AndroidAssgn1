@@ -1,19 +1,16 @@
+package com.example.myapplication
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.form.ApiClient
-import com.example.myapplication.MainActivity
-import com.example.myapplication.R
-import ke.co.app.ApiInterface
+import androidx.appcompat.app.AppCompatActivity
 import ke.co.app.RegistrationResponse
 import kotlinx.android.synthetic.main.activity_registration.*
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import okhttp3.MultipartBody
 
 class registration : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +43,7 @@ class registration : AppCompatActivity() {
 
 fun registerUser(requestBody: RequestBody) {
     var apiClient = ApiClient.buildService(ApiInterface::class.java)
-    var registrationCall = apiClient.registerStudent(requestBody)
+    val registrationCall = apiClient.registerStudent(requestBody)
     registrationCall.enqueue(object : Callback<RegistrationResponse> {
         fun onFailure(
             call: Call<RegistrationResponse>,
@@ -83,6 +80,7 @@ fun registerUser(requestBody: RequestBody) {
     })
 }
 
-private fun Any.enqueue(any: Any) {
+private fun Any.enqueue(callback: Callback<RegistrationResponse>) {
 
 }
+

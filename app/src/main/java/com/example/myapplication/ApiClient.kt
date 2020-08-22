@@ -1,7 +1,6 @@
 package com.example.myapplication
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import com.google.gson.Gson
 import retrofit2.converter.gson.GsonConverterFactory
 
 

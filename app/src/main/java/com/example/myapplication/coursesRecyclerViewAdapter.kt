@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_courses.view.*
 import kotlinx.android.synthetic.main.row_course_item.view.*
 
 class coursesRecyclerViewAdapter(val coursesList: List<Coursess>) :
@@ -17,7 +18,7 @@ class coursesRecyclerViewAdapter(val coursesList: List<Coursess>) :
         return coursesList.size
     }
     override fun onBindViewHolder(holder: NamesViewHolder, position: Int) {
-        holder.rowView.tvCourses.text = coursesList[position].toString()
+        holder.rowView.courseName.text= coursesList[position].toString()
     }
     
     class NamesViewHolder(val rowView: View) : RecyclerView.ViewHolder(rowView)

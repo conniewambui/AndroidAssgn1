@@ -5,6 +5,8 @@ import android.preference.PreferenceManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
+import database.HelloDatabase
 import kotlinx.android.synthetic.main.activity_courses.*
 import okhttp3.Callback
 import retrofit2.Call
@@ -12,20 +14,23 @@ import retrofit2.Response
 
 
 class CoursesActivity : AppCompatActivity() {
+    lateinit var database: HelloDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_courses)
-        var courseList = listOf<Coursess>(
-            Coursess("1", "Python", "BB 2", "James Mwai", "Django"),
-            Coursess("2", "Kotlin", "BB 3", "John Owuor", "Android development training"),
-            Coursess("3", "Javascript", "BB 4", "Purity Maina", "React"),
-            Coursess("4", "Entrepreneurship", "BB 5", "Kelly Gatweri", "Business ideas and development")
-        )
-        rvCourses.layoutManager = LinearLayoutManager(baseContext)
-        rvCourses.adapter = coursesRecyclerViewAdapter(courseList)
-
-
+        database = Room.databaseBuilder(baseContext, HelloDatabase::class.java, name:"hello-db").build()
         fetchCoursess()
+        //var courseList = listOf<Coursess>(
+           // Coursess("1", "Python", "BB 2", "James Mwai", "Django"),
+            //Coursess("2", "Kotlin", "BB 3", "John Owuor", "Android development training"),
+            //Coursess("3", "Javascript", "BB 4", "Purity Maina", "React"),
+            //Coursess("4", "Entrepreneurship", "BB 5", "Kelly Gatweri", "Business ideas and development")
+       // )
+        //rvCourses.layoutManager = LinearLayoutManager(baseContext)
+        //rvCourses.adapter = coursesRecyclerViewAdapter(courseList)
+
+
+
     }
 
         fun fetchCoursess() {
@@ -57,7 +62,15 @@ class CoursesActivity : AppCompatActivity() {
             override fun enqueue(callback: retrofit2.Callback<Coursess>) {
                 TODO("Not yet implemented")
             }
+
+            override fun clone(): Call<Coursess> {
+                TODO("Not yet implemented")
+            }
         })
     }
+}
+
+private fun <T> Call<T>.enqueue(call: Call<T>) {
+
 }
 
